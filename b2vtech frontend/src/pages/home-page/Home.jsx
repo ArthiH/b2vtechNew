@@ -7,13 +7,32 @@ import { IoPersonSharp } from "react-icons/io5";
 import { Feature } from "./feature/Feature";
 import { Subject } from "./subject/Subject";
 import { Footer } from "../footer/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export const Home = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
   return (
     <>
       <Navbar />
       <header className="h-screen relative shadow-xl">
-        <main className="max-w-screen-xl w-full mx-auto pt-10 h-full">
+        <main
+          className="max-w-screen-xl w-full mx-auto pt-10 h-full"
+          data-aos="fade-down"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-offset="50"
+          data-aos-delay="100"
+          data-aos-easing="ease-in-out"
+          data-aos-duration="1000"
+          data-aos-mirror="true"
+          data-aos-once="false"
+        >
           <section className="flex items-center gap-5">
             <div className="pl-5 pt-20">
               <h1 className="text-7xl font-semibold text-primary max-sm:text-5xl max-md:text-center">
@@ -42,14 +61,12 @@ export const Home = () => {
                 return (
                   <div
                     key={index}
-                    className="flex gap-5 items-center p-3 rounded-xl bg-gradient-to-r from-primary from-50% to-skyBlue shadow-xl max-[900px]:px-2 max-[900px]:py-2"
+                    className="flex gap-5 items-center p-3 text-white rounded-xl bg-primary shadow-xl max-[900px]:px-2 max-[900px]:py-2"
                   >
-                    <span className="text-5xl text-skyBlue ">{value.icon}</span>
+                    <span className="text-5xl ">{value.icon}</span>
                     <article>
-                      <h1 className="text-xl mb-2 text-white font-semibold">
-                        {value.h1}
-                      </h1>
-                      <p className="text-white">{value.p}</p>
+                      <h1 className="text-xl mb-2 font-semibold">{value.h1}</h1>
+                      <p>{value.p}</p>
                     </article>
                   </div>
                 );

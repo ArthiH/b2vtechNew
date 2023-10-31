@@ -20,14 +20,14 @@ export const Navbar = () => {
             <img className="max-w-[120px] w-full" src={logo} alt="not found" />
           </div>
           <section className="flex justify-between text-xl items-center gap-12 text-white mr-5 max-md:hidden max-md:text-md">
-            <div className="flex gap-8">
+            <div className="flex gap-8 font-semibold">
               <NavLink to="/">Home</NavLink>
               <NavLink>Courses</NavLink>
               <NavLink>About</NavLink>
               <NavLink>Portfolio</NavLink>
               <NavLink>Contact</NavLink>
             </div>
-            <div className="flex gap-5 max-[950px]:hidden">
+            <div className="flex gap-5 max-[950px]:hidden font-semibold">
               <button className="bg-skyBlue px-10 py-2 rounded-md hover:scale-105">
                 Join
               </button>

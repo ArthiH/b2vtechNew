@@ -4,6 +4,7 @@ import devops from "../../../assets/feature/devops.jpg";
 import native from "../../../assets/feature/native.jpg";
 import agile from "../../../assets/feature/agile.jpg";
 import learn from "../../../assets/feature/learn.png";
+import book from "../../../assets/feature/book.png";
 import { TiTick } from "react-icons/ti";
 import { PiStudentBold } from "react-icons/pi";
 import { BsFillLaptopFill } from "react-icons/bs";
@@ -15,6 +16,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import ScrollTrigger from "react-scroll-trigger";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -49,13 +52,19 @@ function SamplePrevArrow(props) {
 }
 
 export const Feature = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
   const settings = {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    // pauseOnHover: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -80,11 +89,21 @@ export const Feature = () => {
   return (
     <>
       <main className="flex justify-center">
-        <section className="max-w-screen-lg w-full my-10">
+        <section
+          className="max-w-screen-lg w-full my-10"
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-bottom"
+          data-aos-offset="50"
+          data-aos-delay="100"
+          data-aos-easing="ease-in-out"
+          data-aos-duration="2000"
+          data-aos-mirror="true"
+          data-aos-once="false"
+        >
           <h1 className="text-4xl font-bold text-primary text-center mt-36 max-md:mt-44 mb-20">
             Our Feature Courses
           </h1>
-          <Slider {...settings}>
+          <Slider {...settings} className="px-10">
             {FeatureCard.map((value, index) => {
               return (
                 <div
@@ -93,7 +112,7 @@ export const Feature = () => {
                 >
                   <img className="rounded-t-xl" src={value.img} />
                   <div className="max-h-[180px] overflow-auto mt-2 px-3 overflow">
-                    <h1 className="text-xl text-primary font-bold">
+                    <h1 className="sticky top-0 bg-white text-xl text-primary font-bold">
                       {value.h1}
                     </h1>
                     <p className="text-center mt-2 text-mediumgrey">
@@ -120,13 +139,14 @@ export const Feature = () => {
 export const FeatureCard = [
   {
     img: web,
-    h1: "Web app development",
+    h1: "Web Development",
     p: "Revolutionize your online presence with our platform.Our web app development combines the power of React for dynamic front-end experiences, PHP for robust server-side functionality, JavaScript and CSS for interactivity and style, and Node.js for optimal backend performance.",
   },
   {
     img: cloud,
     h1: " Cloud services with AWS and Azure ",
     p: " Our platform ensures seamless integration, scalability, and host applications, manage data, or deploy cutting-edge technologies. Take your online endeavors to new heights with our expertly designed AWS and Azure solutions.",
+    tech: "our",
   },
   {
     img: devops,
@@ -135,12 +155,12 @@ export const FeatureCard = [
   },
   {
     img: native,
-    h1: "Native iOS/Swift  and Android/Java Kotlin ",
-    p: " We empower you to master native iOS development with Swift and Android development with Java and Kotlin. Our platform to a comprehensive, equipping you with the skills and knowledge to create world-class mobile apps.",
+    h1: "Native iOS and Android Mobile App Development",
+    p: " We empower you to master native iOS development with Swift/SwiftUI and Android development with Java/Kotlin. Our platform to a comprehensive, equipping you with the skills and knowledge to create world-class mobile apps.",
   },
   {
     img: agile,
-    h1: " Project management tools Jira,Rally and agile",
+    h1: "Agile Project management and its tools ",
     p: " We bring together the power of Jira, Rally, and agile practices in a unified environment. From planning and tracking to collaboration and reporting, our platform empowers you to streamline your development process. ",
   },
 ];
@@ -153,8 +173,13 @@ export const CourseCounter = () => {
     { icon: <LiaChalkboardTeacherSolid />, no: "10", lable: "Teacher" },
   ];
   return (
-    <main className="h-60 max-md:h-auto flex justify-center items-center bg-[url('https://c4.wallpaperflare.com/wallpaper/345/197/187/technology-coffee-books-laptop-wallpaper-preview.jpg')] border bg-no-repeat bg-cover">
-      <section className="max-w-screen-xl w-full grid grid-cols-3 max-sm:grid-cols-1 justify-items-center gap-y-16 px-5 my-20 text-white font-extrabold  text-3xl">
+    <main className="flex justify-center items-center relative my-200 mt-20">
+      <img
+        className="h-auto md:h-[22rem] object-cover border w-full"
+        src={book}
+      />
+      <div className="bg-black md:h-[22rem] h-full w-full absolute text-white top-0"></div>
+      <section className="absolute max-w-screen-xl w-full grid grid-cols-3 px-3 max-sm:gap-y-5 justify-items-center gap-y-16 text-white font-extrabold  text-3xl">
         {increment.map((value, index) => {
           return (
             <ScrollTrigger
@@ -162,12 +187,16 @@ export const CourseCounter = () => {
               onEnter={() => setCounterOn(true)}
               onExit={() => setCounterOn(false)}
             >
-              <h1>
-                <span className="text-5xl">{value.icon}</span>
+              <p className="text-7xl text-primary w-full flex justify-center items-center max-sm:text-5xl">
+                {value.icon}
+              </p>
+              <h1 className="text-5xl text-center max-sm:text-3xl">
                 {counterOn && <CountUp start={0} end={value.no} duration={3} />}
                 +
               </h1>
-              <p className="text-sm font-medium">{value.lable}</p>
+              <p className="text-lg font-medium text-center mt-2">
+                {value.lable}
+              </p>
             </ScrollTrigger>
           );
         })}
@@ -177,8 +206,24 @@ export const CourseCounter = () => {
 };
 
 export const LearnSkills = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
   return (
-    <main className="flex justify-center  mt-20">
+    <main
+      className="flex justify-center  mt-40"
+      data-aos="fade-right"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-offset="50"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="2000"
+      data-aos-mirror="true"
+      data-aos-once="false"
+    >
       <div className="max-w-screen-xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section className="flex flex-col  py-5 px-5">
           <h1 className="text-3xl font-bold text-primary">

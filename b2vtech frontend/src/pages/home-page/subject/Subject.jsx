@@ -7,13 +7,35 @@ import laptop from "../../../assets/subjects/laptop.jpg";
 import mobile from "../../../assets/subjects/mobile.jpg";
 import robot from "../../../assets/subjects/robot.jpg";
 import saas from "../../../assets/subjects/saas.jpg";
+import learning from "../../../assets/feature/learning.mp4";
+
 import uidesigner from "../../../assets/subjects/ui-designer.jpg";
 import { TiTick } from "react-icons/ti";
+import { BsPlayCircleFill } from "react-icons/bs";
+import { useRef, useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export const Subject = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
   return (
     <>
-      <main className="flex justify-center">
+      <main
+        className="flex justify-center"
+        data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-offset="100"
+        data-aos-delay="100"
+        data-aos-easing="ease-in-out"
+        data-aos-duration="2000"
+        data-aos-mirror="true"
+        data-aos-once="false"
+      >
         <div className="max-w-screen-xl w-full flex flex-col justify-center my-20 gap-5">
           <h1 className="text-4xl font-bold  text-primary text-center  my-20">
             Explore top subjects
@@ -48,6 +70,7 @@ export const Subject = () => {
         </div>
       </main>
       <Learner />
+      <Video />
       <NextStep />
     </>
   );
@@ -81,8 +104,24 @@ export const SubjectView = [
 ];
 
 export const Learner = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
   return (
-    <main className="flex justify-center">
+    <main
+      className="flex justify-center"
+      data-aos="fade-up-right"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-offset="100"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="2000"
+      data-aos-mirror="true"
+      data-aos-once="false"
+    >
       <div className="max-w-screen-xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section>
           <img
@@ -129,9 +168,77 @@ export const Learner = () => {
     </main>
   );
 };
-export const NextStep = () => {
+
+export const Video = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
+
   return (
-    <main className="flex justify-center">
+    <main
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-offset="100"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="2000"
+      data-aos-mirror="true"
+      data-aos-once="false"
+    >
+      <h1 className="text-4xl font-bold  text-primary text-center  my-20">
+        Explore Your Skills
+      </h1>
+      <div className="flex justify-center my-20 px-5 relative">
+        <video className="rounded-lg" ref={videoRef} width="70%" height="300">
+          <source src={learning} type="video/mp4" />
+        </video>
+        <button
+          className="absolute text-6xl text-primary bg-white rounded-[50px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4"
+          onClick={toggleVideo}
+        >
+          {isPlaying ? <BsPlayCircleFill /> : <BsPlayCircleFill />}
+        </button>
+      </div>
+    </main>
+  );
+};
+
+export const NextStep = () => {
+  useEffect(() => {
+    AOS.init({
+      disable: "mobile",
+    });
+    AOS.refresh();
+  }, []);
+  return (
+    <main
+      className="flex justify-center"
+      data-aos="fade-up-left"
+      data-aos-anchor-placement="top-bottom"
+      data-aos-offset="100"
+      data-aos-delay="100"
+      data-aos-easing="ease-in-out"
+      data-aos-duration="2000"
+      data-aos-mirror="true"
+      data-aos-once="false"
+    >
       <div className="max-w-screen-xl my-20 w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section className="px-3 mb-10">
           <h1 className="text-3xl font-bold text-primary ">
