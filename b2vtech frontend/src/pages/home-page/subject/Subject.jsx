@@ -1,4 +1,4 @@
-import learn from "../../../assets/subjects/learning.jpg";
+import intern from "../../../assets/subjects/Internship.jpg";
 import nextstep from "../../../assets/subjects/next-step.jpg";
 import ai from "../../../assets/subjects/ai.jpg";
 import animation from "../../../assets/subjects/animation.jpg";
@@ -38,7 +38,7 @@ export const Subject = () => {
       >
         <div className="max-w-screen-xl w-full flex flex-col justify-center my-20 gap-5">
           <h1 className="text-4xl font-bold  text-primary text-center  my-20">
-            Explore top subjects
+            Explore Top Empowering Careers
           </h1>
           <section className="grid max-sm:grid-cols-1 max-md:grid-cols-2 max-lg:grid-cols-3 grid-cols-4 max-lg:gap-x-20 max-lg:px-10 justify-items-center gap-y-7 p-5 gap-x-5">
             {SubjectView.map((value, index) => {
@@ -64,7 +64,7 @@ export const Subject = () => {
           </section>
           <div className="flex justify-center mt-10 ">
             <button className="border px-8 py-5 border-primary hover:text-white hover:bg-primary hover:duration-700 text-primary font-semibold text-xl rounded-xl">
-              View More Subject
+              View More Intern
             </button>
           </div>
         </div>
@@ -126,43 +126,47 @@ export const Learner = () => {
         <section>
           <img
             className="w-full rounded-lg object-cover h-full"
-            src={learn}
+            src={intern}
             alt="not found"
           />
         </section>
         <section>
           <h1 className="text-3xl font-bold text-primary pl-3 max-md:mt-10">
-            Learner outcomes on courses you will take
+            Nurturing Talent Through Internships
           </h1>
           <div className="flex flex-col gap-3 mt-10 px-5">
-            <article className="flex items-center gap-3">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Learner outcomes for many courses include the acquisition of new
-                knowledge.
+                Internships are not just about gaining work experience; they are
+                opportunities to nurture and cultivate your talent.
               </p>
             </article>
-            <article className="flex items-center gap-3">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Some courses emphasize critical thinking skills, encouraging
-                students to analyze, evaluate, and synthesize information.
+                We believe in empowering individuals to become the best versions
+                of themselves, and internships are an integral part of that
+                journey.
               </p>
             </article>
-            <article className="flex items-center gap-3">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Courses in creative fields often aim to nurture creativity and
-                innovation.
+                It's not just an internship; it's a chance to bloom and flourish
+                as a future leader in your industry.
               </p>
             </article>
           </div>
+          <button className="bg-primary text-white font-semibold px-5 py-2 rounded-lg my-10 ml-5 hover:scale-105">
+            Explore more
+          </button>
         </section>
       </div>
     </main>
@@ -252,7 +256,7 @@ export const NextStep = () => {
             advancement, education, or any other aspect of life.
           </p>
           <button className="border bg-primary text-white px-5 py-2 font-bold rounded-lg text-xl">
-            Join Now For Free
+            Read More
           </button>
         </section>
         <section>

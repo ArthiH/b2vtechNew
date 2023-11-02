@@ -24,7 +24,6 @@ export const Navbar = () => {
               <NavLink to="/">Home</NavLink>
               <NavLink>Courses</NavLink>
               <NavLink>About</NavLink>
-              <NavLink>Portfolio</NavLink>
               <NavLink>Contact</NavLink>
             </div>
             <div className="flex gap-5 max-[950px]:hidden font-semibold">
@@ -61,7 +60,6 @@ export const Sidebar = (props) => {
           <NavLink to="/">Home</NavLink>
           <NavLink>Courses</NavLink>
           <NavLink>About</NavLink>
-          <NavLink>Portfolio</NavLink>
           <NavLink>Contact</NavLink>
         </div>
         <div className="flex flex-col gap-5">

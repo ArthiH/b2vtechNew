@@ -1,8 +1,9 @@
-import web from "../../../assets/feature/web.avif";
-import cloud from "../../../assets/feature/cloud .jpg";
-import devops from "../../../assets/feature/devops.jpg";
-import native from "../../../assets/feature/native.jpg";
-import agile from "../../../assets/feature/agile.jpg";
+import web from "../../../assets/feature/web.png";
+import cloud from "../../../assets/feature/clouds.png";
+import devops from "../../../assets/feature/devops.png";
+import native from "../../../assets/feature/native.png";
+import agile from "../../../assets/feature/agile.png";
+import chatgpt from "../../../assets/feature/chatgpt.png";
 import learn from "../../../assets/feature/learn.png";
 import book from "../../../assets/feature/book.png";
 import { TiTick } from "react-icons/ti";
@@ -62,9 +63,9 @@ export const Feature = () => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
-    // pauseOnHover: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -100,8 +101,8 @@ export const Feature = () => {
           data-aos-mirror="true"
           data-aos-once="false"
         >
-          <h1 className="text-4xl font-bold text-primary text-center mt-36 max-md:mt-44 mb-20">
-            Our Feature Courses
+          <h1 className="text-4xl font-bold text-primary text-center mt-48 mb-20">
+            Our Features
           </h1>
           <Slider {...settings} className="px-10">
             {FeatureCard.map((value, index) => {
@@ -111,8 +112,8 @@ export const Feature = () => {
                   className="max-w-md min-w-min bg-white rounded-lg shadow-xl"
                 >
                   <img className="rounded-t-xl" src={value.img} />
-                  <div className="max-h-[180px] overflow-auto mt-2 px-3 overflow">
-                    <h1 className="sticky top-0 bg-white text-xl text-primary font-bold">
+                  <div className="mt-2 px-3 min-h-[250px]">
+                    <h1 className="text-xl text-primary font-bold">
                       {value.h1}
                     </h1>
                     <p className="text-center mt-2 text-mediumgrey">
@@ -144,9 +145,9 @@ export const FeatureCard = [
   },
   {
     img: cloud,
-    h1: " Cloud services with AWS and Azure ",
+    h1: "Cloud services with AWS and Azure",
     p: " Our platform ensures seamless integration, scalability, and host applications, manage data, or deploy cutting-edge technologies. Take your online endeavors to new heights with our expertly designed AWS and Azure solutions.",
-    tech: "our",
+    span: "our",
   },
   {
     img: devops,
@@ -160,17 +161,22 @@ export const FeatureCard = [
   },
   {
     img: agile,
-    h1: "Agile Project management and its tools ",
+    h1: "Agile Project management and its tools",
     p: " We bring together the power of Jira, Rally, and agile practices in a unified environment. From planning and tracking to collaboration and reporting, our platform empowers you to streamline your development process. ",
+  },
+  {
+    img: chatgpt,
+    h1: "Chatgpt Open AI ",
+    p: "ChatGPT is an advanced AI-powered conversational model developed by OpenAI. It is designed to be a valuable resource for individuals, professionals, and businesses seeking intelligent and context-aware conversation with an AI model.",
   },
 ];
 
 export const CourseCounter = () => {
   const [counterOn, setCounterOn] = useState(false);
   const increment = [
-    { icon: <BsFillLaptopFill />, no: "20", lable: "Online Courses" },
+    { icon: <BsFillLaptopFill />, no: "20", lable: "Internship" },
     { icon: <PiStudentBold />, no: "100", lable: "Student" },
-    { icon: <LiaChalkboardTeacherSolid />, no: "10", lable: "Teacher" },
+    { icon: <LiaChalkboardTeacherSolid />, no: "10", lable: "Trainers" },
   ];
   return (
     <main className="flex justify-center items-center relative my-200 mt-20">
@@ -227,38 +233,42 @@ export const LearnSkills = () => {
       <div className="max-w-screen-xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section className="flex flex-col  py-5 px-5">
           <h1 className="text-3xl font-bold text-primary">
-            Learn new skills online with top educators
+            Exploring Exciting Internship Pathways
           </h1>
           <p className="my-3 text-mediumgrey">
-            Explore diverse subjects, improve your skills, and advance your
-            career with the convenience of online learning.
+            <i>
+              Embark on a journey of self-discovery and professional growth as
+              you delve into the realm of 'Exploring Exciting Internship
+              Pathways.
+            </i>
           </p>
-          <div className="flex flex-col gap-3">
-            <article className="flex items-center gap-3">
+          <div className="flex flex-col gap-3 mt-5">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Learning online can often be more cost-effective than
-                traditional education.
+                Dive into the dynamic landscape of internships, where each
+                opportunity is a door to learning, skill development, and
+                networking.
               </p>
             </article>
-            <article className="flex items-center gap-3">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Learning is a lifelong and online platforms support continuous
-                improvement.
+                Our guide provides you with the tools to make informed decisions
+                as you step into the world of internships.
               </p>
             </article>
-            <article className="flex items-center gap-3">
+            <article className="flex gap-3">
               <span className="text-skyBlue text-2xl">
                 <TiTick />
               </span>
               <p className="text-mediumgrey">
-                Their guidance ensures high-quality education and a valuable
-                learning experience.
+                Let's embark on this journey together, and unlock the thrilling
+                world of internship opportunities.
               </p>
             </article>
           </div>
