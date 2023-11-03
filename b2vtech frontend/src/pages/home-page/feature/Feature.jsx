@@ -1,8 +1,8 @@
-import web from "../../../assets/feature/web.png";
-import cloud from "../../../assets/feature/clouds.png";
-import devops from "../../../assets/feature/devops.png";
-import native from "../../../assets/feature/native.png";
-import agile from "../../../assets/feature/agile.png";
+import web from "../../../assets/feature/web.jpg";
+import cloud from "../../../assets/feature/cloud.jpg";
+import devops from "../../../assets/feature/devops.jpg";
+import native from "../../../assets/feature/mobile.jpg";
+import agile from "../../../assets/feature/agile.jpg";
 import chatgpt from "../../../assets/feature/chatgpt.png";
 import learn from "../../../assets/feature/learn.png";
 import book from "../../../assets/feature/book.png";
@@ -116,7 +116,7 @@ export const Feature = () => {
                     <h1 className="text-xl text-primary font-bold">
                       {value.h1}
                     </h1>
-                    <p className="text-center mt-2 text-mediumgrey">
+                    <p className="text-center my-5 text-litegrey text-sm">
                       {value.p}
                     </p>
                   </div>

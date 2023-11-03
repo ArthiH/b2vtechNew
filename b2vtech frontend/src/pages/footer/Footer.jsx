@@ -3,7 +3,7 @@ export const Footer = () => {
     <main className="bg-primary p-14 mt-10 flex justify-center items-center">
       <section className="max-w-screen-xl w-[95%]">
         <h1 className="text-white text-4xl max-sm:text-3xl mb-5 font-semibold">
-          B2V TECHNOLOGY
+          Bees2Ventures TECHNOLOGY
         </h1>
         <div className="w-full h-1 bg-white mt-2"></div>
 

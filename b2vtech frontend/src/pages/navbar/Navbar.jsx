@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.svg";
 import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
+import { Login } from "../RL-pages/Login";
 
 export const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -30,9 +31,12 @@ export const Navbar = () => {
               <button className="bg-skyBlue px-10 py-2 rounded-md hover:scale-105">
                 Join
               </button>
-              <button className="border-2 border-white px-5 py-2 rounded-md hover:scale-105">
+              <Link
+                to="/Login"
+                className="border-2 border-white px-5 py-2 rounded-md hover:scale-105"
+              >
                 Login In
-              </button>
+              </Link>
             </div>
           </section>
           <div
