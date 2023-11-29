@@ -12,11 +12,15 @@ const RegisterSchema = new db.Schema({
   },
   email: {
     type: String,
+    unique: true,
   },
   password: {
     type: String,
   },
   role: {
+    type: String,
+  },
+  otp: {
     type: String,
   },
 });

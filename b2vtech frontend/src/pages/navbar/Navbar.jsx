@@ -32,10 +32,10 @@ export const Navbar = () => {
                 Join
               </button>
               <Link
-                to="/Login"
+                to="/login"
                 className="border-2 border-white px-5 py-2 rounded-md hover:scale-105"
               >
-                Login In
+                Log In
               </Link>
             </div>
           </section>
@@ -70,9 +70,12 @@ export const Sidebar = (props) => {
           <button className="bg-skyBlue px-8 py-2 rounded-md hover:scale-105">
             Join
           </button>
-          <button className="border-2 border-white px-3 py-2 rounded-md hover:scale-105">
-            Login In
-          </button>
+          <Link
+            to="/login"
+            className="border-2 border-white px-3 py-2 rounded-md hover:scale-105"
+          >
+            Log In
+          </Link>
         </div>
       </section>
     </main>
