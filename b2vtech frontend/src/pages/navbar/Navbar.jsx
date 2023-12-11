@@ -2,7 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo/logo.svg";
 import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
-import { Login } from "../RL-pages/Login";
 
 export const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);

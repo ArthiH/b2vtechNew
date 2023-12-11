@@ -1,4 +1,3 @@
-import home from "../../assets/home-img/home.png";
 import internship from "../../assets/home-img/intern.jpg";
 import { Navbar } from "../navbar/Navbar";
 
@@ -26,10 +25,10 @@ export const Home = () => {
         className="h-screen relative shadow-xl"
         data-aos="fade-down"
         data-aos-anchor-placement="top-bottom"
-        data-aos-offset="50"
-        data-aos-delay="100"
+        data-aos-offset="25"
+        data-aos-delay="50"
         data-aos-easing="ease-in-out"
-        data-aos-duration="1000"
+        data-aos-duration="500"
         data-aos-mirror="true"
         data-aos-once="false"
       >

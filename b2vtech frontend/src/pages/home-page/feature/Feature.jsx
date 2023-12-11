@@ -94,10 +94,10 @@ export const Feature = () => {
           className="max-w-screen-lg w-full my-10"
           data-aos="fade-up"
           data-aos-anchor-placement="top-bottom"
-          data-aos-offset="50"
-          data-aos-delay="100"
+          data-aos-offset="25"
+          data-aos-delay="50"
           data-aos-easing="ease-in-out"
-          data-aos-duration="2000"
+          data-aos-duration="500"
           data-aos-mirror="true"
           data-aos-once="false"
         >

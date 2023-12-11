@@ -29,10 +29,10 @@ export const Subject = () => {
         className="flex justify-center"
         data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
-        data-aos-offset="100"
-        data-aos-delay="100"
+        data-aos-offset="25"
+        data-aos-delay="50"
         data-aos-easing="ease-in-out"
-        data-aos-duration="2000"
+        data-aos-duration="500"
         data-aos-mirror="true"
         data-aos-once="false"
       >
@@ -115,10 +115,10 @@ export const Learner = () => {
       className="flex justify-center"
       data-aos="fade-up-right"
       data-aos-anchor-placement="top-bottom"
-      data-aos-offset="100"
-      data-aos-delay="100"
+      data-aos-offset="25"
+      data-aos-delay="50"
       data-aos-easing="ease-in-out"
-      data-aos-duration="2000"
+      data-aos-duration="500"
       data-aos-mirror="true"
       data-aos-once="false"
     >
@@ -199,10 +199,10 @@ export const Video = () => {
     <main
       data-aos="fade-up"
       data-aos-anchor-placement="top-bottom"
-      data-aos-offset="100"
-      data-aos-delay="100"
+      data-aos-offset="25"
+      data-aos-delay="50"
       data-aos-easing="ease-in-out"
-      data-aos-duration="2000"
+      data-aos-duration="500"
       data-aos-mirror="true"
       data-aos-once="false"
     >
@@ -234,12 +234,12 @@ export const NextStep = () => {
   return (
     <main
       className="flex justify-center"
-      data-aos="fade-up-left"
+      data-aos="fade-up-right"
       data-aos-anchor-placement="top-bottom"
-      data-aos-offset="100"
-      data-aos-delay="100"
+      data-aos-offset="25"
+      data-aos-delay="50"
       data-aos-easing="ease-in-out"
-      data-aos-duration="2000"
+      data-aos-duration="500"
       data-aos-mirror="true"
       data-aos-once="false"
     >
