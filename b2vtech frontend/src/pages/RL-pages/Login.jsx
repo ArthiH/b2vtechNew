@@ -50,7 +50,7 @@ export const Login = () => {
           </h1>
           {error && <p className="text-[red] mt-5">{error}</p>}
           <section className="w-full">
-            <div className="group w-[90%] mx-auto border-litegrey border py-2 px-5 mt-7 rounded-full focus-within:border-2 focus-within:border-primary">
+            <div className="group w-[90%] mx-auto border-litegrey border py-2 px-5 mt-7 rounded-lg focus-within:border-2 focus-within:border-primary">
               <input
                 className="focus:outline-none w-full p-2 "
                 type="email"
@@ -63,7 +63,7 @@ export const Login = () => {
             </p>
           </section>
           <section className="w-full">
-            <div className="group w-[90%] mx-auto border-litegrey flex items-center border py-2 px-5 mt-4 rounded-full focus-within:border-2 focus-within:border-primary">
+            <div className="group w-[90%] mx-auto border-litegrey flex items-center border py-2 px-5 mt-4 rounded-lg focus-within:border-2 focus-within:border-primary">
               <input
                 className="focus:outline-none w-full p-2"
                 type={isvisible ? "text" : "password"}

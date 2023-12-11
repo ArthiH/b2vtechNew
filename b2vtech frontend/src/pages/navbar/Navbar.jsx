@@ -13,9 +13,9 @@ export const Navbar = () => {
       {sidebar && <Sidebar onclose={aside} />}
       <main
         style={{ transitionDelay: "2s" }}
-        className="sticky top-0 z-40 items-center bg-gradient-to-r from-primary to-skyBlue flex justify-center"
+        className="sticky top-0 z-40 items-center bg-gradient-to-r from-primary from-70% to-skyBlue flex justify-center"
       >
-        <section className="max-w-screen-xl w-full flex justify-between items-center px-4 py-2">
+        <section className="max-w-screen-2xl w-full flex justify-between items-center px-4 py-2">
           <div className="py-2">
             <img className="max-w-[120px] w-full" src={logo} alt="not found" />
           </div>

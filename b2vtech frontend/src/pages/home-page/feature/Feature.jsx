@@ -91,7 +91,7 @@ export const Feature = () => {
     <>
       <main className="flex justify-center">
         <section
-          className="max-w-screen-lg w-full my-10"
+          className="max-w-screen-2xl w-full my-10"
           data-aos="fade-up"
           data-aos-anchor-placement="top-bottom"
           data-aos-offset="25"
@@ -185,7 +185,7 @@ export const CourseCounter = () => {
         src={book}
       />
       <div className="bg-black md:h-[22rem] h-full w-full absolute text-white top-0"></div>
-      <section className="absolute max-w-screen-xl w-full grid grid-cols-3 px-3 max-sm:gap-y-5 justify-items-center gap-y-16 text-white font-extrabold  text-3xl">
+      <section className="absolute max-w-screen-2xl w-full grid grid-cols-3 px-3 max-sm:gap-y-5 justify-items-center gap-y-16 text-white font-extrabold  text-3xl">
         {increment.map((value, index) => {
           return (
             <ScrollTrigger
@@ -230,7 +230,7 @@ export const LearnSkills = () => {
       data-aos-mirror="true"
       data-aos-once="false"
     >
-      <div className="max-w-screen-xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
+      <div className="max-w-screen-2xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section className="flex flex-col  py-5 px-5">
           <h1 className="text-3xl font-bold text-primary">
             Exploring Exciting Internship Pathways

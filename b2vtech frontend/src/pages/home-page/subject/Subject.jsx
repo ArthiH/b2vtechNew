@@ -36,7 +36,7 @@ export const Subject = () => {
         data-aos-mirror="true"
         data-aos-once="false"
       >
-        <div className="max-w-screen-xl w-full flex flex-col justify-center my-20 gap-5">
+        <div className="max-w-screen-2xl w-full flex flex-col justify-center my-20 gap-5">
           <h1 className="text-4xl font-bold  text-primary text-center  my-20">
             Explore Top Empowering Careers
           </h1>
@@ -49,7 +49,7 @@ export const Subject = () => {
                 >
                   <div>
                     <img
-                      className="object-cover h-[150px] w-full rounded-lg"
+                      className="object-cover w-full rounded-lg"
                       src={value.img}
                       alt="not found"
                     />
@@ -122,7 +122,7 @@ export const Learner = () => {
       data-aos-mirror="true"
       data-aos-once="false"
     >
-      <div className="max-w-screen-xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
+      <div className="max-w-screen-2xl w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section>
           <img
             className="w-full rounded-lg object-cover h-full"
@@ -243,7 +243,7 @@ export const NextStep = () => {
       data-aos-mirror="true"
       data-aos-once="false"
     >
-      <div className="max-w-screen-xl my-20 w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
+      <div className="max-w-screen-2xl my-20 w-full grid grid-cols-2 max-md:grid-cols-1 broder px-5 gap-x-5 max-md:gap-y-5">
         <section className="px-3 mb-10">
           <h1 className="text-3xl font-bold text-primary ">
             Take the next step toward your personal and professional goals with

@@ -89,7 +89,7 @@ export const Register = () => {
                 <label>
                   {field.label} <span className="text-[red]">*</span>
                 </label>
-                <div className="group border-litegrey border py-1 px-5 mt-1 rounded-full flex items-center focus-within:border-2 focus-within:border-primary">
+                <div className="group border-litegrey border py-1 px-5 mt-1 rounded-lg flex items-center focus-within:border-2 focus-within:border-primary">
                   <input
                     className="focus:outline-none w-full p-2"
                     type={field.type}
@@ -120,11 +120,12 @@ export const Register = () => {
             ))}
           </section>
 
+       
           <fieldset className="w-[90%] mt-3 flex flex-col">
             <legend>
               Choose a role: <span className="text-[red]">*</span>
             </legend>
-            <div className="border-litegrey border p-3 mt-1 rounded-full flex items-center focus-within:border-2 focus-within:border-primary">
+            <div className="border-litegrey border p-3 mt-1 rounded-lg flex items-center focus-within:border-2 focus-within:border-primary">
               <select
                 className="w-full focus:outline-none"
                 {...register("role")}
@@ -144,7 +145,32 @@ export const Register = () => {
               </select>
             </div>
           </fieldset>
-
+   <fieldset className="w-[90%] mt-3 flex flex-col">
+            <legend>
+              Choose a Category: <span className="text-[red]">*</span>
+            </legend>
+            <div className="border-litegrey border p-3 mt-1 rounded-lg flex items-center focus-within:border-2 focus-within:border-primary">
+              <select
+                className="w-full focus:outline-none"
+                
+              >
+                {[
+                  { value: "digital", label: "Digital marketing" },
+                  { value: "flutter", label: "Flutter" },
+                  { value: "react", label: "React js" },
+                ].map((option) => (
+                  <option
+                    key={option.value}
+                    value={option.value}
+                    className="text-xl"
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </fieldset>
+          
           <Link
             to="/"
             className="border w-[90%] py-3 text-center rounded-full bg-primary mt-8 text-white font-bold text-xl"

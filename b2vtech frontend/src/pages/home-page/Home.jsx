@@ -1,4 +1,5 @@
-import internship from "../../assets/home-img/intern.jpg";
+import internship from "../../assets/home-img/internship.jpg";
+import student from "../../assets/home-img/student.png";
 import { Navbar } from "../navbar/Navbar";
 
 import { PiBooks } from "react-icons/pi";
@@ -32,36 +33,42 @@ export const Home = () => {
         data-aos-mirror="true"
         data-aos-once="false"
       >
-        <div className="relative">
-          <img
-            className="bg-cover bg-no-repeat w-full h-screen"
-            src={internship}
-            alt="not found"
-          />
-          <div className="absolute h-screen w-full bg-liteblack top-0"></div>
-          <section className=" max-w-screen-xl w-full absolute top-1/2 -translate-y-1/2 left-20">
-            <div className="w-[50%]">
-              <h1 className="text-7xl font-semibold text-primary max-sm:text-5xl max-md:text-center">
-                <span>Get An</span>
+        <div className="relative bg-cover bg-no-repeat bg-center h-screen w-full" style={{backgroundImage:`url(${internship})`}}>
+          <div className="absolute h-screen w-full bg-black opacity-40 top-0"></div>
+          <section className="flex justify-center items-center ">
+            <div className="max-w-screen-2xl w-[95%] h-screen grid grid-cols-2 justify-items-center items-center max-[1050px]:grid-cols-1 gap-5 z-10 mx-10">
+              <div className="max-[1050px]:text-center">
+                 <h1 className="text-8xl max-[1000px]:text-6xl font-bold text-white max-sm:text-5xl max-md:text-center [text-shadow:_2px_5px_0_#38bdf8]">
+                <span className="text-skyBlue [text-shadow:_2px_5px_0_white]">Get An</span>
                 <br />
                 Internship
               </h1>
-              <p className="my-5 text-white font-semibold max-md:text-center pr-5">
+              <p className="my-5 text-lg text-white font-semibold  max-[1000px]:text-center max-[1000px]:my-10">
                 <i>
                   Access resources and guides to help you excel in your
                   internship and future career.our platform offers a wealth of
                   knowledge and tools to help you thrive during your internship
                   and chart a course toward a prosperous career.
                 </i>
-              </p>
-              <div className="flex max-md:justify-center">
-                <button className="bg-skyBlue px-8 py-4 rounded-md text-white font-bold text-xl hover:ring-2 hover:ring-white flex max-md:text-center">
+                </p>
+                 <div className="flex max-[1050px]:justify-center">
+                <button className="bg-primary shadow-md shadow-white px-8 py-4 rounded-md text-white font-bold text-xl hover:ring-2 hover:ring-white hover:scale-105 flex max-md:text-center">
                   Join For Free
                 </button>
               </div>
+                
+              </div>
+               <div className="w-full flex justify-center mb-16 max-[600px]:hidden">
+                <img
+            className="object-cover w-full h-full min-w-[500px] max-[1050px]:w-[500px]"
+            src={student}
+            alt="not found"
+          />
             </div>
+</div>
           </section>
-          <div className="absolute -bottom-12 grid grid-cols-3 max-md:justify-items-center gap-3 left-1/2 -translate-x-1/2 max-w-screen-xl w-full px-3 max-md:grid-cols-1 max-md:-bottom-36 max-sm:-bottom-40">
+       
+          <div className="absolute -bottom-16 grid grid-cols-3 max-md:justify-items-center gap-3 left-1/2 -translate-x-1/2 max-w-screen-xl w-full px-3 max-md:grid-cols-1 max-md:-bottom-40 max-[300px]:-bottom-72 z-20">
             {HomeCard.map((value, index) => {
               return (
                 <div
