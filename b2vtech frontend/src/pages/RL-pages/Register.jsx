@@ -56,15 +56,19 @@ export const Register = () => {
     },
   ];
   const onSubmit = handleSubmit((data) => {
-    RegisterStore(data);
-    reset({
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
-      password: "",
-      Cpassword: "",
-    });
+     localStorage.setItem('registerData', JSON.stringify(data));
+    console.log(data);
+    // const storedData = localStorage.getItem('registerData');
+
+    // RegisterStore(data);
+    // reset({
+    //   firstName: "",
+    //   lastName: "",
+    //   phoneNumber: "",
+    //   email: "",
+    //   password: "",
+    //   Cpassword: "",
+    // });
   });
   const RegisterStore = (data) => {
     try {
@@ -151,9 +155,7 @@ export const Register = () => {
             </legend>
             <div className="border-litegrey border p-3 mt-1 rounded-lg flex items-center focus-within:border-2 focus-within:border-primary">
               <select
-                className="w-full focus:outline-none"
-                
-              >
+                className="w-full focus:outline-none">
                 {[
                   { value: "digital", label: "Digital marketing" },
                   { value: "flutter", label: "Flutter" },
@@ -161,8 +163,9 @@ export const Register = () => {
                 ].map((option) => (
                   <option
                     key={option.value}
-                    value={option.value}
+                    // value={option.value}
                     className="text-xl"
+                    {...register("category")}
                   >
                     {option.label}
                   </option>
@@ -172,7 +175,7 @@ export const Register = () => {
           </fieldset>
           
           <Link
-            to="/"
+            // to="/login"
             className="border w-[90%] py-3 text-center rounded-full bg-primary mt-8 text-white font-bold text-xl"
             onClick={onSubmit}
           >

@@ -1,7 +1,7 @@
 import { PiEyeClosedBold } from "react-icons/pi";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import { Navbar } from "../navbar/Navbar";
 import { Footer } from "../footer/Footer";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const {
     register,
@@ -22,22 +23,58 @@ export const Login = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const onSumbit = handleSubmit((data) => {
+
+
+  const NavigateData = () => {
+    console.log("active");
+       const storedData = localStorage.getItem('LoginName');
+    // const dataObject = JSON.parse(storedData);
+    // const firstName = dataObject.firstName;
+    navigate('/intern', { state: {username:storedData} });
+    
+  //   try {
+  //     //    axios({
+  //     // method: "get",
+  //     // url: "http://localhost:5000/user/get",
+  //      axios({
+  //     method: "post",
+  //     url: "http://localhost:5000/user/login", 
+  //     })
+      
+      
+  //          .then((res) => {
+  //    console.log(res.data);
+   
+  //  })
+  //    } catch {
+       
+//  }
+   
+}
+
+  const onSubmit = handleSubmit((data) => {
     LoginStore(data);
+    // NavigateData()
+
   });
 
-  const LoginStore = (data) => {
+const LoginStore = (data) => {
+  try {
     axios({
       method: "post",
       url: "http://localhost:5000/user/login",
       data: data,
     })
-      .then(() => {
-        window.location.href = "/";
+      .then((res) => {
+        console.log(res.data.getFirstName);
+        localStorage.setItem("LoginName",res.data.getFirstName)
       })
-      .catch(() => {
-        setError("Incorrect email or password");
-      });
+        
+  }
+  catch (error) {
+    console.log(error);
+  }
+      
   };
 
   return (
@@ -98,13 +135,15 @@ export const Login = () => {
               Forget Password ?
             </Link>
           </div>
-          <Link
-            to="/"
+          <button
+            
             className="border w-[90%] py-3 rounded-full bg-primary text-center text-white font-bold text-xl mb-10"
-            onClick={onSumbit}
+            onClick={onSubmit}
+            // onClick={NavigateData}
+             
           >
             Login
-          </Link>
+          </button>
           <p className="text-mediumgrey">
             You Don't Have An Account?{" "}
             <Link
@@ -116,6 +155,7 @@ export const Login = () => {
           </p>
         </section>
       </main>
+     
       <Footer />
     </>
   );

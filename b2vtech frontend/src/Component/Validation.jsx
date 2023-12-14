@@ -14,6 +14,7 @@ export const RegisterSchema = Yup.object({
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is Mandatory"),
   role: Yup.string().required(),
+  category: Yup.string().required(),
 });
 
 export const LoginSchema = Yup.object({

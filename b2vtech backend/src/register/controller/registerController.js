@@ -6,7 +6,8 @@ require("dotenv").config();
 const RegisterModel = require("../model/registerModel");
 
 const registerData = async (req, res) => {
-  const { email, password, firstName, lastName, phoneNumber, role } = req.body;
+  const { email, password, firstName, lastName, phoneNumber, role, category } =
+    req.body;
   try {
     const existingUser = await RegisterModel.findOne({ email });
 
@@ -22,6 +23,7 @@ const registerData = async (req, res) => {
       lastName,
       phoneNumber,
       role,
+      category,
     });
     await newUser.save();
 
@@ -31,27 +33,51 @@ const registerData = async (req, res) => {
   }
 };
 
+const registergetData = async (req, res) => {
+  try {
+    const getRegistervalue = await RegisterModel.findById(req.body.id);
+    res.send(getRegistervalue);
+  } catch (error) {  
+    res.json({ error: "not get user_name" });
+  }
+};
 const loginData = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await RegisterModel.findOne({ email });
+  const { email, password,id,firstName} = req.body;
+  const user = await RegisterModel.findOne({ email, id });
+  const getId=user.id
+  const getFirstName=user.firstName
+
   if (!user) {
     return res.status(401).json({ error: "Incorrect email or password" });
   }
+
   try {
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Incorrect email or password" });
     } else {
-      const token = jwt.sign({ email: user.email }, process.env.ACCESS_TOKEN, {
-        expiresIn: "1h",
-      });
-      res.json({ token });
+      const token = jwt.sign(
+        { email: user.email, getId, getFirstName },
+        process.env.ACCESS_TOKEN,
+        {
+          expiresIn: "1h",
+        }
+      );
+      res.json({ token, getId, getFirstName });
     }
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// const logingetData = async (req, res) => {
+//   try {
+//     const LGD=await RegisterModel.findOne()
+//   } catch (error) {
+//     res.json({error:"not get a login data"})
+//   }
+// }
 
 const updateEmailAndPassword = async (otp, newEmail, min) => {
   const transporter = nodemailer.createTransport({
@@ -168,4 +194,11 @@ const VerfiyNP = async (req, res) => {
   }
 };
 
-module.exports = { registerData, loginData, ForgotData, OTPverify, VerfiyNP };
+module.exports = {
+  registerData,
+  loginData,
+  ForgotData,
+  OTPverify,
+  VerfiyNP,
+  registergetData,
+};

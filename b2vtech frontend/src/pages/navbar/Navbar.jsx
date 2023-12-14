@@ -22,7 +22,7 @@ export const Navbar = () => {
           <section className="flex justify-between text-xl items-center gap-12 text-white mr-5 max-md:hidden max-md:text-md">
             <div className="flex gap-8 font-semibold">
               <NavLink to="/">Home</NavLink>
-              <NavLink>Courses</NavLink>
+              <NavLink>Internship</NavLink>
               <NavLink>About</NavLink>
               <NavLink>Contact</NavLink>
             </div>
@@ -61,7 +61,7 @@ export const Sidebar = (props) => {
       <section className="text-white text-xl px-10 flex flex-col justify-center">
         <div className="flex flex-col gap-8 my-10">
           <NavLink to="/">Home</NavLink>
-          <NavLink>Courses</NavLink>
+          <NavLink>Internship</NavLink>
           <NavLink>About</NavLink>
           <NavLink>Contact</NavLink>
         </div>

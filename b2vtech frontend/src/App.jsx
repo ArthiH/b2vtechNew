@@ -4,6 +4,7 @@ import { Home } from "./pages/home-page/Home";
 import { Login } from "./pages/RL-pages/Login";
 import { Register } from "./pages/RL-pages/Register";
 import { FP, FPC, Forgot, OTP } from "./pages/RL-pages/Forgot";
+import { Intern } from "./pages/RL-pages/internship_page/IP";
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
           <Route path="otp" element={<OTP />} />
           <Route path="fpc" element={<FPC />} />
         </Route>
+        <Route path="/intern" Component={Intern} />
       </Routes>
     </>
   );
