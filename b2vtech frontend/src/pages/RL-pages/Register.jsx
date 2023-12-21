@@ -17,7 +17,6 @@ export const Register = () => {
   const {
     register,
     formState: { errors },
-    reset,
     handleSubmit,
   } = useForm({ resolver: yupResolver(RegisterSchema) });
   const [isvisible, setIsVisible] = useState(false);
@@ -56,31 +55,22 @@ export const Register = () => {
     },
   ];
   const onSubmit = handleSubmit((data) => {
-     localStorage.setItem('registerData', JSON.stringify(data));
-    console.log(data);
-    // const storedData = localStorage.getItem('registerData');
-
-    // RegisterStore(data);
-    // reset({
-    //   firstName: "",
-    //   lastName: "",
-    //   phoneNumber: "",
-    //   email: "",
-    //   password: "",
-    //   Cpassword: "",
-    // });
+    RegisterStore(data);
   });
-  const RegisterStore = (data) => {
-    try {
-      axios({
-        method: "post",
-        url: "http://localhost:5000/user/add",
-        data: data,
-      });
-    } catch (error) {
-      console.log(error, "error");
-    }
-  };
+
+  function RegisterStore(value) {
+    axios({
+      method: "post",
+      url: "http://localhost:5000/user/add",
+      data:value
+    })
+      .then(() => {
+        window.location.href="/login"
+      }).catch((e) => {
+      console.log(e);
+    })
+}
+
   return (
     <>
       <Navbar />
@@ -163,7 +153,7 @@ export const Register = () => {
                 ].map((option) => (
                   <option
                     key={option.value}
-                    // value={option.value}
+                    
                     className="text-xl"
                     {...register("category")}
                   >
@@ -175,7 +165,7 @@ export const Register = () => {
           </fieldset>
           
           <Link
-            // to="/login"
+            to="/login"
             className="border w-[90%] py-3 text-center rounded-full bg-primary mt-8 text-white font-bold text-xl"
             onClick={onSubmit}
           >

@@ -20,7 +20,7 @@ export const Footer = () => {
               <span>
                 <MdEmail className="text-skyBlue text-xl" />
               </span>
-              <p>hr@cloudbeestech.com</p>
+              <p>hrsupport@b2vtech.com</p>
             </article>
             <article className="flex gap-2 mt-3 max-[620px]:justify-center">
               <p>
@@ -28,7 +28,6 @@ export const Footer = () => {
               </p>
               <article className="flex flex-col gap-1">
                 <span>(India) +91 -7358760777</span>
-                <span>(USA) +1 (614) 632-9349</span>
               </article>
             </article>
           </div>

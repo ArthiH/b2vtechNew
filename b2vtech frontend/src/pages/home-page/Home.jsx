@@ -1,5 +1,5 @@
-import internship from "../../assets/home-img/internship.jpg";
-import student from "../../assets/home-img/student.png";
+import internship from "../../assets/home-img/internship.svg";
+import student from "../../assets/home-img/student.svg";
 import { Navbar } from "../navbar/Navbar";
 
 import { PiBooks } from "react-icons/pi";

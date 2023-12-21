@@ -1,7 +1,7 @@
 import { PiEyeClosedBold } from "react-icons/pi";
 import { FaEye } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useNavigation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar } from "../navbar/Navbar";
 import { Footer } from "../footer/Footer";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,7 +10,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [error, setError] = useState("");
   const {
     register,
@@ -19,62 +18,33 @@ export const Login = () => {
   } = useForm({ resolver: yupResolver(LoginSchema) });
   const [isvisible, setIsVisible] = useState(false);
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-
-
-  const NavigateData = () => {
-    console.log("active");
-       const storedData = localStorage.getItem('LoginName');
-    // const dataObject = JSON.parse(storedData);
-    // const firstName = dataObject.firstName;
-    navigate('/intern', { state: {username:storedData} });
-    
-  //   try {
-  //     //    axios({
-  //     // method: "get",
-  //     // url: "http://localhost:5000/user/get",
-  //      axios({
-  //     method: "post",
-  //     url: "http://localhost:5000/user/login", 
-  //     })
-      
-      
-  //          .then((res) => {
-  //    console.log(res.data);
-   
-  //  })
-  //    } catch {
-       
-//  }
-   
-}
-
   const onSubmit = handleSubmit((data) => {
     LoginStore(data);
-    // NavigateData()
-
+    localStorage.getItem("LoginName");
   });
 
-const LoginStore = (data) => {
-  try {
+  const LoginStore = (data) => {
     axios({
       method: "post",
       url: "http://localhost:5000/user/login",
       data: data,
     })
       .then((res) => {
-        console.log(res.data.getFirstName);
-        localStorage.setItem("LoginName",res.data.getFirstName)
+        const { firstName, id, lastName, phoneNumber } = res.data;
+        localStorage.setItem("LoginFN", firstName);
+        localStorage.setItem("LoginLN", lastName);
+        localStorage.setItem("LoginPN", phoneNumber);
+        localStorage.setItem("LoginId", id);
+        window.location.href = "/intern";
       })
-        
-  }
-  catch (error) {
-    console.log(error);
-  }
-      
+      .catch(() => {
+        setError("Invalid Username and Password");
+      });
   };
 
   return (
@@ -136,11 +106,8 @@ const LoginStore = (data) => {
             </Link>
           </div>
           <button
-            
             className="border w-[90%] py-3 rounded-full bg-primary text-center text-white font-bold text-xl mb-10"
             onClick={onSubmit}
-            // onClick={NavigateData}
-             
           >
             Login
           </button>
@@ -155,7 +122,7 @@ const LoginStore = (data) => {
           </p>
         </section>
       </main>
-     
+
       <Footer />
     </>
   );

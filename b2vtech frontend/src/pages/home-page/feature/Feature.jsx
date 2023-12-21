@@ -211,7 +211,7 @@ export const CourseCounter = () => {
   );
 };
 
-export const LearnSkills = () => {
+export const LearnSkills = () => {  
   useEffect(() => {
     AOS.init({
       disable: "mobile",

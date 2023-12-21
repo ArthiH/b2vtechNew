@@ -6,11 +6,9 @@ const {
   ForgotData,
   OTPverify,
   VerfiyNP,
-  registergetData
 } = require("../controller/registerController");
 
 router.post("/add", registerData);
-router.get("/get", registergetData);
 router.post("/login", loginData);
 router.post("/forgot", ForgotData);
 router.post("/verifyotp", OTPverify);

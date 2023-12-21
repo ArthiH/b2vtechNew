@@ -11,7 +11,7 @@ import learning from "../../../assets/feature/learning.mp4";
 
 import uidesigner from "../../../assets/subjects/ui-designer.jpg";
 import { TiTick } from "react-icons/ti";
-import { BsPlayCircleFill } from "react-icons/bs";
+import { GiPauseButton, GiPlayButton } from "react-icons/gi";
 import { useRef, useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -115,10 +115,10 @@ export const Learner = () => {
       className="flex justify-center"
       data-aos="fade-up-right"
       data-aos-anchor-placement="top-bottom"
-      data-aos-offset="25"
-      data-aos-delay="50"
+      data-aos-offset="50"
+      data-aos-delay="100"
       data-aos-easing="ease-in-out"
-      data-aos-duration="500"
+      data-aos-duration="2000"
       data-aos-mirror="true"
       data-aos-once="false"
     >
@@ -214,10 +214,10 @@ export const Video = () => {
           <source src={learning} type="video/mp4" />
         </video>
         <button
-          className="absolute text-6xl text-primary bg-white rounded-[50px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4"
+          className="absolute  bg-white  text-primary p-3 rounded-[50px] top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4"
           onClick={toggleVideo}
         >
-          {isPlaying ? <BsPlayCircleFill /> : <BsPlayCircleFill />}
+          {isPlaying ? <GiPauseButton className="text-5xl"/> : < GiPlayButton  className="text-5xl"/>}
         </button>
       </div>
     </main>
@@ -234,12 +234,12 @@ export const NextStep = () => {
   return (
     <main
       className="flex justify-center"
-      data-aos="fade-up-right"
+      data-aos="fade-up-left"
       data-aos-anchor-placement="top-bottom"
-      data-aos-offset="25"
-      data-aos-delay="50"
+      data-aos-offset="75"
+      data-aos-delay="100"
       data-aos-easing="ease-in-out"
-      data-aos-duration="500"
+      data-aos-duration="2000"
       data-aos-mirror="true"
       data-aos-once="false"
     >

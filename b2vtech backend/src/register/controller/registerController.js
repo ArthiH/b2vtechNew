@@ -33,51 +33,44 @@ const registerData = async (req, res) => {
   }
 };
 
-const registergetData = async (req, res) => {
-  try {
-    const getRegistervalue = await RegisterModel.findById(req.body.id);
-    res.send(getRegistervalue);
-  } catch (error) {  
-    res.json({ error: "not get user_name" });
-  }
-};
+
 const loginData = async (req, res) => {
-  const { email, password,id,firstName} = req.body;
-  const user = await RegisterModel.findOne({ email, id });
-  const getId=user.id
-  const getFirstName=user.firstName
-
-  if (!user) {
-    return res.status(401).json({ error: "Incorrect email or password" });
-  }
-
   try {
+    const { email, password } = req.body;
+    const user = await RegisterModel.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({ error: "Incorrect email or password" });
+    }
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Incorrect email or password" });
-    } else {
-      const token = jwt.sign(
-        { email: user.email, getId, getFirstName },
-        process.env.ACCESS_TOKEN,
-        {
-          expiresIn: "1h",
-        }
-      );
-      res.json({ token, getId, getFirstName });
     }
+    const token = jwt.sign(
+      {
+        email: user.email,
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phoneNumber: user.phoneNumber,
+      },
+      process.env.ACCESS_TOKEN,
+      { expiresIn: "1h" }
+    );
+
+    res.json({
+      token,
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      phoneNumber: user.phoneNumber,
+    });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Unauthentication user" });
   }
 };
-
-// const logingetData = async (req, res) => {
-//   try {
-//     const LGD=await RegisterModel.findOne()
-//   } catch (error) {
-//     res.json({error:"not get a login data"})
-//   }
-// }
 
 const updateEmailAndPassword = async (otp, newEmail, min) => {
   const transporter = nodemailer.createTransport({
@@ -92,7 +85,7 @@ const updateEmailAndPassword = async (otp, newEmail, min) => {
     from: process.env.AUTH_EMAIL,
     to: newEmail,
     subject: "Password Reset OTP",
-    text: `Your OTP for password reset is: ${otp} ${min} minutes remaining until OTP expires`,
+    text: `Your OTP for password reset is: ${otp} valid for ${min} minutes only`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -115,11 +108,9 @@ const ForgotData = async (req, res) => {
       return res.status(404).json({ error: "Invalid email Id" });
     } else {
       const otp = generateOTP();
-      const otpExpiration = new Date();
-      otpExpiration.setMinutes(otpExpiration.getMinutes() + 2);
-
       user.otp = otp;
-
+      const otpExpiration = new Date();
+      otpExpiration.setMinutes(otpExpiration.getMinutes() + 10);
       user.otpExpiration = otpExpiration;
       const currentTime = new Date();
       const timeDifference = user.otpExpiration - currentTime;
@@ -127,11 +118,7 @@ const ForgotData = async (req, res) => {
       const minutes = Math.floor(
         (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
       );
-
-      // console.log(
-      //   `${minutes} minutes ${seconds} seconds remaining until OTP expires`
-      // );
-
+      console.log(minutes);
       await user.save();
 
       await updateEmailAndPassword(otp, user.email, minutes);
@@ -152,9 +139,6 @@ const OTPverify = async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "OTP is incorrect" });
     } else {
-      user.otp = null;
-      await user.save();
-
       res.json({
         message: "OTP verified successfully",
         email: user.email,
@@ -166,30 +150,27 @@ const OTPverify = async (req, res) => {
 };
 
 const VerfiyNP = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, otp } = req.body;
+
   try {
     const user = await RegisterModel.findOne({ email });
-
     if (!user) {
       return res.status(404).json({ error: "User not found" });
-    } else {
-      // Verify if the user's OTP is already verified (optional step)
-      if (!user.otp) {
-        return res.status(400).json({ error: "OTP not verified" });
-      }
-
-      // Hash the new password before saving it to the database
-      const hashedPassword = await bcrypt.hash(password, 10);
-      user.password = hashedPassword;
-      user.otp = null;
-      await user.save();
-
-      res.json({
-        message: "Password set successfully",
-      });
     }
-  } catch (hashingError) {
-    console.error(hashingError);
+
+    if (otp !== user.otp) {
+      return res.status(401).json({ error: "Invalid OTP" });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+    user.otp = null;
+    await user.save();
+
+    res.json({
+      message: "Password set successfully",
+    });
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -200,5 +181,5 @@ module.exports = {
   ForgotData,
   OTPverify,
   VerfiyNP,
-  registergetData,
+
 };

@@ -5,6 +5,10 @@ import { Login } from "./pages/RL-pages/Login";
 import { Register } from "./pages/RL-pages/Register";
 import { FP, FPC, Forgot, OTP } from "./pages/RL-pages/Forgot";
 import { Intern } from "./pages/RL-pages/internship_page/IP";
+import { Internship } from "./pages/internship/Internship";
+import { About } from "./pages/about/About";
+import { Contact } from "./pages/contact/Contact";
+import { AccountSetting } from "./pages/accountSetting/AccountSetting";
 
 export const App = () => {
   return (
@@ -19,6 +23,10 @@ export const App = () => {
           <Route path="fpc" element={<FPC />} />
         </Route>
         <Route path="/intern" Component={Intern} />
+        <Route path="/internship" Component={Internship} />
+        <Route path="/about" Component={About} />
+        <Route path="/contact" Component={Contact} />
+        <Route path="/account" Component={AccountSetting} />
       </Routes>
     </>
   );

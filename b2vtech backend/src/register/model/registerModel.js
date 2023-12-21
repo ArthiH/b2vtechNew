@@ -3,9 +3,9 @@ const { v4 } = require("uuid");
 
 const RegisterSchema = new db.Schema({
   _id: {
-      type: String,
-      default: v4,
-    },
+    type: String,
+    default: v4,
+  },
   firstName: {
     type: String,
   },

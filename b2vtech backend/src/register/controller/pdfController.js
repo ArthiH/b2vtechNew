@@ -17,7 +17,7 @@ const pdfData = async (req, res) => {
 };
 
 const getPdf = async (req, res) => {
-  const id = req.body.id;
+  const id = req.params.id;
 
   try {
     const getPdfData = await RegisterModel.aggregate([
