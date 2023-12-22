@@ -78,24 +78,22 @@ export const InternProvide = () => {
             <h1 className="text-5xl text-white font-bold my-16 px-3 max-sm:text-4xl ">
               INTERNSHIP <br /> Provide
             </h1>
-            <section className="grid grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 gap-3 justify-items-center items-center my-64 max-xl:my-48 ">
+            <section className="flex flex-wrap justify-center items-center gap-10 my-64 max-xl:my-48">
               {InternCard.map((value, index) => {
                 return (
                   <div
                     key={index}
-                    className="my-5 w-full  max-w-sm flex-1 bg-white border-skyBlue shadow-xl border-2 rounded-xl py-5 px-2 flex flex-col justify-center items-center flex-grow"
+                    className="max-w-sm w-full bg-white rounded-lg flex flex-col justify-center items-center border-skyBlue shadow-xl border-2 py-5 px-2"
                   >
-                    <div className="w-full flex justify-center items-center  my-5">
-                      <img
-                        className="max-w-[150px] object-cover w-full max-[400px]:max-w-[100px]"
-                        src={value.icon}
-                        alt="not found"
-                      />
-                    </div>
+                    <img
+                      className="max-w-[150px] object-cover w-full max-[400px]:max-w-[100px]"
+                      src={value.icon}
+                      alt="not found"
+                    />
                     <h1 className="text-3xl text-center my-5 text-primary font-semibold max-[400px]:text-2xl">
                       {value.title}
                     </h1>
-                    <p className="text-center text-[18px] mb-5 px-2 text-mediumgrey h-28 font-medium max-[400px]:text-[15px] overflow-hidden">
+                    <p className="text-center text-[16px] mb-5 px-2 text-mediumgrey h-28 font-medium max-[400px]:text-[15px] overflow-hidden">
                       {value.p}
                     </p>
                     <Link
@@ -132,3 +130,35 @@ export const InternCard = [
     p: "React Developer to innovate and lead in the creation of dynamic and responsive user interfaces, contributing to the success of our web development projects.",
   },
 ];
+
+
+  //  <section className="grid grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 gap-3 justify-items-center items-center my-64 max-xl:my-48 ">
+  //    {InternCard.map((value, index) => {
+  //      return (
+  //        <div
+  //          key={index}
+  //          className="my-5 w-full  max-w-sm flex-1 bg-white border-skyBlue shadow-xl border-2 rounded-xl py-5 px-2 flex flex-col justify-center items-center flex-grow"
+  //        >
+  //          <div className="w-full flex justify-center items-center  my-5">
+  //            <img
+  //              className="max-w-[150px] object-cover w-full max-[400px]:max-w-[100px]"
+  //              src={value.icon}
+  //              alt="not found"
+  //            />
+  //          </div>
+  //          <h1 className="text-3xl text-center my-5 text-primary font-semibold max-[400px]:text-2xl">
+  //            {value.title}
+  //          </h1>
+  //          <p className="text-center text-[18px] mb-5 px-2 text-mediumgrey h-28 font-medium max-[400px]:text-[15px] overflow-hidden">
+  //            {value.p}
+  //          </p>
+  //          <Link
+  //            to="/register"
+  //            className="text-2xl text-white bg-primary px-10 py-3 rounded-xl my-2 font-semibold max-[400px]:text-xl max-[400px]:px-5"
+  //          >
+  //            Find more
+  //          </Link>
+  //        </div>
+  //      );
+  //    })}
+  //  </section>;
