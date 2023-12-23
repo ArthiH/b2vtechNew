@@ -3,9 +3,16 @@ import oaLogo from "../../assets/contact/oa logo.svg";
 import { FaPhone, FaLocationDot } from "react-icons/fa6";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { Footer } from "../footer/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export const Contact = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Navbar />
@@ -55,11 +62,16 @@ export const ContactUs = () => {
     });
   };
   const handleSubmit = () => {
-    console.log("Form submitted with data:", formData);
-    setFormData({
-      email: "",
-      phone: "",
-      msg: "",
+    axios({
+      method: "post",
+      url: "http://localhost:5000/contact/contactdata",
+      data: formData,
+    }).then(() => {
+      setFormData({
+        email: "",
+        phone: "",
+        msg: "",
+      });
     });
   };
 

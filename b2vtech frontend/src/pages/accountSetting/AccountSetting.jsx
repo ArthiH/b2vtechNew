@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Footer } from "../footer/Footer";
 import { Navbar } from "../navbar/Navbar";
 import { FaRegEdit } from "react-icons/fa";
+import axios from "axios";
 
 export const AccountSetting = () => {
   const [loginFN, setLoginFN] = useState("");
@@ -12,28 +13,45 @@ export const AccountSetting = () => {
   const lastNameInputRef = useRef(null);
   const phoneNumberInputRef = useRef(null);
 
-
   useEffect(() => {
-    const loginFN = localStorage.getItem("LoginFN");
-    const loginLN = localStorage.getItem("LoginLN");
-      const loginPN = localStorage.getItem("LoginPN");
-    //   if (loginPN === undefined) {
-    //       const LPN=
-    //   }
-    setLoginFN(loginFN);
-    setLoginLN(loginLN);
-    setLoginPN(loginPN);
+    const getId = localStorage.getItem("LoginId");
+
+    axios({
+      method: "get",
+      url: `http://localhost:5000/user/rgd/${getId}`,
+    }).then((res) => {
+      const { firstName, lastName, phoneNumber } = res.data;
+      setLoginFN(firstName);
+      setLoginLN(lastName);
+      setLoginPN(phoneNumber);
+
+    });
   }, []);
 
   const handleEditClick = (inputRef) => {
     inputRef.current.focus();
-  
   };
 
-  const handleSaveClick = () => {
-    console.log(loginFN);
-    
+  const onSumbit = () => {
+    const getId = localStorage.getItem("LoginId");
+      axios({
+        method: "put",
+        url: `http://localhost:5000/edit/editdata/${getId}`,
+        data: {
+          firstName: loginFN,
+          lastName: loginLN,
+          phoneNumber: loginPN,
+        },
+      })
+      .then(() => {
+        localStorage.setItem("LoginFN", loginFN);
+          window.location.href = "/intern";
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
+
   return (
     <>
       <Navbar />
@@ -81,14 +99,21 @@ export const AccountSetting = () => {
             </label>
             <div className="w-full border border-primary rounded-xl my-2 flex gap-3 items-center">
               <input
+                ref={lastNameInputRef}
                 className="outline-none my-2 py-2 mx-3 w-full"
                 type="text"
                 placeholder="Enter your LastName"
                 name="lastName"
                 id="lastName"
                 value={loginLN}
+                onChange={(e) => {
+                  setLoginLN(e.target.value);
+                }}
               />
-              <p className="text-2xl mr-3 text-primary">
+              <p
+                className="text-2xl mr-3 text-primary"
+                onClick={() => handleEditClick(lastNameInputRef)}
+              >
                 <FaRegEdit />
               </p>
             </div>
@@ -103,14 +128,21 @@ export const AccountSetting = () => {
             </label>
             <div className="w-full border border-primary rounded-xl my-2 flex gap-3 items-center">
               <input
+                ref={phoneNumberInputRef}
                 className="outline-none my-2 py-2 mx-3 w-full"
                 type="text"
                 placeholder="Enter your phoneNumber"
                 name="phoneNumber"
                 id="phoneNumber"
                 value={loginPN}
+                onChange={(e) => {
+                  setLoginPN(e.target.value);
+                }}
               />
-              <p className="text-2xl mr-3 text-primary">
+              <p
+                className="text-2xl mr-3 text-primary"
+                onClick={() => handleEditClick(phoneNumberInputRef)}
+              >
                 <FaRegEdit />
               </p>
             </div>
@@ -118,7 +150,7 @@ export const AccountSetting = () => {
 
           <button
             className="px-8 py-2 bg-primary text-white text-xl mt-5 rounded-lg"
-            onClick={handleSaveClick}
+            onClick={onSumbit}
           >
             Save
           </button>

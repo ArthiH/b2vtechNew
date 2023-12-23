@@ -5,8 +5,14 @@ import react from "../../assets/about/react.svg";
 import flutter from "../../assets/about/flutter.svg";
 import aboutEndBg from "../../assets/about/about_End_bg.svg";
 import { Footer } from "../footer/Footer";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const About = () => {
+   const { pathname } = useLocation();
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   return (
     <>
       <Navbar />

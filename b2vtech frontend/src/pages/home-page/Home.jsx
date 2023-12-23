@@ -11,8 +11,13 @@ import { Footer } from "../footer/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const Home = () => {
+   const { pathname } = useLocation();
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   useEffect(() => {
     AOS.init({
       disable: "mobile",

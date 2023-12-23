@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const RegisterModel = require("../model/registerModel");
+const { json } = require("express");
 
 const registerData = async (req, res) => {
   const { email, password, firstName, lastName, phoneNumber, role, category } =
@@ -32,7 +33,24 @@ const registerData = async (req, res) => {
     res.status(500).json({ error: "Failed to create register" });
   }
 };
-
+const registergetData = async (req, res) => {
+  const { id } = req.params;
+  const RGD = await RegisterModel.findById(id);
+  try {
+    if (!RGD) {
+      res.status(401).json({ error: "user not found" });
+    } else {
+      res.json({
+        firstName: RGD.firstName,
+        lastName: RGD.lastName,
+        phoneNumber: RGD.phoneNumber,
+      });
+    }
+  } catch (error) {
+    console.log("Invalid user ID");
+    res.status(500);
+  }
+};
 
 const loginData = async (req, res) => {
   try {
@@ -53,8 +71,6 @@ const loginData = async (req, res) => {
         email: user.email,
         id: user.id,
         firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
       },
       process.env.ACCESS_TOKEN,
       { expiresIn: "1h" }
@@ -64,8 +80,6 @@ const loginData = async (req, res) => {
       token,
       id: user.id,
       firstName: user.firstName,
-      lastName: user.lastName,
-      phoneNumber: user.phoneNumber,
     });
   } catch (error) {
     res.status(500).json({ error: "Unauthentication user" });
@@ -181,5 +195,5 @@ module.exports = {
   ForgotData,
   OTPverify,
   VerfiyNP,
-
+  registergetData,
 };

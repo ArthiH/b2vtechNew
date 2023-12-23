@@ -35,10 +35,8 @@ export const Login = () => {
       data: data,
     })
       .then((res) => {
-        const { firstName, id, lastName, phoneNumber } = res.data;
+        const { firstName, id } = res.data;
         localStorage.setItem("LoginFN", firstName);
-        localStorage.setItem("LoginLN", lastName);
-        localStorage.setItem("LoginPN", phoneNumber);
         localStorage.setItem("LoginId", id);
         window.location.href = "/intern";
       })

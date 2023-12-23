@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-export const ContactSchema = new mongoose.Schema({
+const ContactSchema = new mongoose.Schema({
   email: {
     type: String,
   },
@@ -13,4 +13,5 @@ export const ContactSchema = new mongoose.Schema({
 });
 
 const ContactModel = mongoose.model("contactb2v", ContactSchema);
+
 module.exports = ContactModel;

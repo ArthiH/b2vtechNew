@@ -6,9 +6,14 @@ import boy from "../../assets/intern/intern_boy.svg";
 import flutter from "../../assets/intern/flutter.svg";
 import react from "../../assets/intern/react.svg";
 import dm from "../../assets/intern/DM.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export const Internship = () => {
+   const { pathname } = useLocation();
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, [pathname]);
   return (
     <>
       <Navbar />
@@ -130,35 +135,3 @@ export const InternCard = [
     p: "React Developer to innovate and lead in the creation of dynamic and responsive user interfaces, contributing to the success of our web development projects.",
   },
 ];
-
-
-  //  <section className="grid grid-cols-3 md:grid-cols-2 max-md:grid-cols-1 gap-3 justify-items-center items-center my-64 max-xl:my-48 ">
-  //    {InternCard.map((value, index) => {
-  //      return (
-  //        <div
-  //          key={index}
-  //          className="my-5 w-full  max-w-sm flex-1 bg-white border-skyBlue shadow-xl border-2 rounded-xl py-5 px-2 flex flex-col justify-center items-center flex-grow"
-  //        >
-  //          <div className="w-full flex justify-center items-center  my-5">
-  //            <img
-  //              className="max-w-[150px] object-cover w-full max-[400px]:max-w-[100px]"
-  //              src={value.icon}
-  //              alt="not found"
-  //            />
-  //          </div>
-  //          <h1 className="text-3xl text-center my-5 text-primary font-semibold max-[400px]:text-2xl">
-  //            {value.title}
-  //          </h1>
-  //          <p className="text-center text-[18px] mb-5 px-2 text-mediumgrey h-28 font-medium max-[400px]:text-[15px] overflow-hidden">
-  //            {value.p}
-  //          </p>
-  //          <Link
-  //            to="/register"
-  //            className="text-2xl text-white bg-primary px-10 py-3 rounded-xl my-2 font-semibold max-[400px]:text-xl max-[400px]:px-5"
-  //          >
-  //            Find more
-  //          </Link>
-  //        </div>
-  //      );
-  //    })}
-  //  </section>;
